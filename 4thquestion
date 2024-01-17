@@ -1,0 +1,21 @@
+var express = require("express");
+
+var app =  express();   
+
+app.get("/", function(req, res){
+
+    let str = "<h3 align='center'>Welcome to Express JS Applications</h3>";   
+    str +=   "<hr/>";
+    str +=   "<div style='color:blue;'>";
+    str +=   "Employee ID        :  2586470 <br/>";
+    str +=   "Employee Name      :  Rahul Gogu <br/>";
+    str +=   "Employee job       : trainee <br/>";
+    str +=   "Employee E-mail    :  gogu.rahul@mphasis.com <br/>";
+    str +=   "Employee dept no   :  12 <br/>";
+    str +=   "</div>";
+
+    res.send(str);
+});
+
+var server = app.listen(3005, function(){});
+console.log("Express Server Application is started. Browser at the URL: http://localhost:3005/");

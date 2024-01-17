@@ -1,0 +1,68 @@
+1. What are the request methods in http?
+
+HTTP (Hypertext Transfer Protocol) defines several request methods that indicate the desired action to be performed for a given resource. The primary HTTP methods are:
+
+1 GET: Requests data from a specified resource. It should only retrieve data and should not have any other effect on the data.
+
+2 POST: Submits data to be processed to a specified resource. The data is included in the body of the request. It may lead to a change in the state of the resource or trigger some other side effects.
+
+3 PUT: Updates a resource or creates a new resource if it does not exist at the specified URI. The entire representation of the resource is replaced with the request data.
+
+4 PATCH: Partially updates a resource, meaning that only the specified fields of the resource are updated. It is often used when updating a large resource, and only a small portion needs to be modified.
+
+5 DELETE: Deletes the specified resource.
+
+6 HEAD: Requests the headers of the specified resource. It is similar to GET but does not include the actual data in the response. It is often used to check the headers (e.g., for freshness) before requesting the entire resource.
+
+7 OPTIONS: Represents a request for information about the communication options available on the request/response chain identified by the URI. It is used to describe the communication options for the target resource.
+
+8 TRACE: Performs a message loop-back test along the path to the target resource, providing a way to test and debug proxies.
+
+9 CONNECT: Converts the request connection to a transparent TCP/IP tunnel, usually to facilitate SSL-encrypted communication (HTTPS) through an unencrypted HTTP proxy.
+
+
+
+
+
+2. Find the out the difference between GET and POST methods?
+
+The primary difference between the GET and POST methods in HTTP lies in how they handle data and the type of requests they are intended for:
+
+a Data Handling:
+
+GET: Parameters are included in the URL (in the query string). It appends data to the URL after a question mark (?). This makes the data visible in the browser's address bar.
+POST: Parameters are included in the body of the request. The data is not visible in the URL, making it more secure for sensitive information.
+
+b Security:
+
+GET: Less secure for sensitive data because the data is visible in the URL. It is suitable for non-sensitive data and is commonly used for retrieving information.
+POST: More secure for sensitive data as the parameters are sent in the request body, which is not visible in the URL.
+
+c Data Length:
+
+GET: Limited by the maximum length of a URL. Browsers and servers may have different limitations, but it's generally more restricted compared to POST.
+POST: Can handle larger amounts of data as it is sent in the request body. There are still limits, but they are typically higher than those for GET requests.
+
+d Caching:
+
+GET: Responses can be cached by browsers, as the request is considered idempotent (repeating the same request produces the same result).
+POST: Responses are not cached by default because the request may have side effects (e.g., updating a database), and repeating it may not produce the same result.
+
+e Bookmarking and Back/Forward Buttons:
+
+GET: Results can be bookmarked, and the browser's back and forward buttons can be used to navigate through the history of GET requests.
+POST: Typically not bookmarked, and using back and forward buttons may trigger a warning about resubmitting data.
+
+f Idempotence:
+
+GET: Idempotent, meaning that making the same request multiple times has the same effect as making it once.
+POST: Not necessarily idempotent, as multiple requests may have different effects (e.g., creating multiple records).
+In summary, use the GET method for safe and idempotent operations, such as retrieving data. Use the POST method for operations that may have side effects, involve sensitive data, or require larger data payloads.
+
+
+
+
+
+3. How to send the files as response in express js?	
+
+In Express.js, you can send files as responses using the res.sendFile() method. This method is part of the response (res) object in Express.
